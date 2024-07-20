@@ -39,7 +39,7 @@ def main():
         print(language)
 
 
-main()
+# main()
 
 
 def using_csv():
@@ -54,7 +54,7 @@ def using_csv():
     in_file.close()
 
 
-# using_csv()
+using_csv()
 
 
 def using_namedtuple():
@@ -73,7 +73,7 @@ def using_namedtuple():
     in_file.close()
 
 
-# using_namedtuple()
+using_namedtuple()
 
 
 def using_csv_namedtuple():
@@ -85,4 +85,4 @@ def using_csv_namedtuple():
         print(language.name, 'was released in', language.year)
         print(repr(language))
 
-# using_csv_namedtuple()
+using_csv_namedtuple()
