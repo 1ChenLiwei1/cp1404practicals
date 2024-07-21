@@ -8,6 +8,16 @@ def main():
     print(f"Loaded {len(projects)} projects from projects.txt")
 
 
+
+
+def add_new_project(projects):
+    name = input("Name: ")
+    start_date = input("Start date (dd/mm/yyyy): ")
+    priority = int(input("Priority: "))
+    cost_estimate = float(input("Cost estimate: "))
+    percent_complete = int(input("Percent complete: "))
+    projects.append(Project(name, start_date, priority, cost_estimate, percent_complete))
+
 def filter_projects_by_date(projects):
     date_string = input("Show projects that start after date (dd/mm/yy): ")
     date = datetime.strptime(date_string, "%d/%m/%Y")
