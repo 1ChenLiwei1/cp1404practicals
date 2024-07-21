@@ -10,6 +10,14 @@ def main():
 
 
 
+def display_projects(projects):
+    print("Incomplete projects:")
+    for project in sorted([p for p in projects if not p.is_complete()]):
+        print(f"  {project}")
+    print("Completed projects:")
+    for project in sorted([p for p in projects if p.is_complete()]):
+        print(f"  {project}")
+
 def save_projects(filename, projects):
     with open(filename, 'w') as out_file:
         out_file.write("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage\n")
