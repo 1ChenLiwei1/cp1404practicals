@@ -8,7 +8,12 @@ def main():
     print(f"Loaded {len(projects)} projects from projects.txt")
 
 
-
+def filter_projects_by_date(projects):
+    date_string = input("Show projects that start after date (dd/mm/yy): ")
+    date = datetime.strptime(date_string, "%d/%m/%Y")
+    filtered_projects = [p for p in projects if p.start_date > date]
+    for project in sorted(filtered_projects, key=attrgetter('start_date')):
+        print(project)
 
 def display_projects(projects):
     print("Incomplete projects:")
