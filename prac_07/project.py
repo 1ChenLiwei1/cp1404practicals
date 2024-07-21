@@ -8,7 +8,18 @@ def main():
     print(f"Loaded {len(projects)} projects from projects.txt")
 
 
-
+def update_project(projects):
+    for i, project in enumerate(projects):
+        print(f"{i} {project}")
+    project_index = int(input("Project choice: "))
+    project = projects[project_index]
+    print(project)
+    new_percent_complete = input("New Percentage: ")
+    if new_percent_complete:
+        project.percent_complete = int(new_percent_complete)
+    new_priority = input("New Priority: ")
+    if new_priority:
+        project.priority = int(new_priority)
 
 def add_new_project(projects):
     name = input("Name: ")
