@@ -33,6 +33,27 @@ def main():
             print("Invalid choice")
 
 
+def get_valid_number(prompt, number_type):
+    while True:
+        try:
+            number = number_type(input(prompt))
+            break
+        except ValueError:
+            print("Invalid input")
+    return number
+
+
+def get_valid_date(prompt):
+    while True:
+        try:
+            date_string = input(prompt)
+            datetime.strptime(date_string, "%d/%m/%Y").date()
+            break
+        except ValueError:
+            print("Invalid date format")
+    return date_string
+
+
 def update_project(projects):
     for i, project in enumerate(projects):
         print(f"{i} {project}")
@@ -48,16 +69,17 @@ def update_project(projects):
 
 
 def add_new_project(projects):
+    print("Let's add a new project")
     name = input("Name: ")
-    start_date = input("Start date (dd/mm/yyyy): ")
-    priority = int(input("Priority: "))
-    cost_estimate = float(input("Cost estimate: "))
-    percent_complete = int(input("Percent complete: "))
+    start_date = get_valid_date("Start date (dd/mm/yyyy): ")
+    priority = get_valid_number("Priority: ", int)
+    cost_estimate = get_valid_number("Cost estimate: ", float)
+    percent_complete = get_valid_number("Percent complete: ", int)
     projects.append(Project(name, start_date, priority, cost_estimate, percent_complete))
 
 
 def filter_projects_by_date(projects):
-    date_string = input("Show projects that start after date (dd/mm/yy): ")
+    date_string = get_valid_date("Show projects that start after date (dd/mm/yy): ")
     date = datetime.strptime(date_string, "%d/%m/%Y")
     filtered_projects = [p for p in projects if p.start_date > date]
     for project in sorted(filtered_projects, key=attrgetter('start_date')):
