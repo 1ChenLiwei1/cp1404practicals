@@ -6,6 +6,30 @@ from project_management import Project
 def main():
     projects = load_projects('projects.txt')
     print(f"Loaded {len(projects)} projects from projects.txt")
+    while True:
+        display_menu()
+        choice = input(">>> ").lower()
+        if choice == 'l':
+            filename = input("Filename to load projects from: ")
+            projects = load_projects(filename)
+        elif choice == 's':
+            filename = input("Filename to save projects to: ")
+            save_projects(filename, projects)
+        elif choice == 'd':
+            display_projects(projects)
+        elif choice == 'f':
+            filter_projects_by_date(projects)
+        elif choice == 'a':
+            add_new_project(projects)
+        elif choice == 'u':
+            update_project(projects)
+        elif choice == 'q':
+            if input("Would you like to save to projects.txt? (y/n) ").lower() == 'y':
+                save_projects('projects.txt', projects)
+            print("Thank you for using custom-built project management software.")
+            break
+        else:
+            print("Invalid choice")
 
 
 def update_project(projects):
