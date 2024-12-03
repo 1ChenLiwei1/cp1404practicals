@@ -22,7 +22,7 @@ def main():
 
 
 def get_data():
-    guitar_year = float(input("Year:"))
+    guitar_year = float(input("Year: "))
     guitar_cost = float(input("Cost: $"))
     return guitar_year, guitar_cost
 
